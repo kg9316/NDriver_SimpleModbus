@@ -16,6 +16,10 @@ There will be other repos that have ModbusRTU and one that combine the two in th
 
 ModbusRTU introduces CRC calculation.
 
+Testing can be done with a ModbusTcpSlaveNetwork on the same station.
+
+For more advanced testing where you can manipulate transactionID's and exception codes I use https://www.helmholz.cz/download/category/3-software?download=26:ananas 
+
 `You will have to modify the environment.gradle file for your needs.`
 
 **Please add a comment in the discussion when you clone/download.**
