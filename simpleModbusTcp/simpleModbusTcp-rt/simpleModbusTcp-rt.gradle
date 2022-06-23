@@ -1,0 +1,31 @@
+/*
+ * Copyright 2022 gangstad, All Rights Reserved.
+ */
+description = "Simple Modbus Tcp implementation"
+
+ext {
+  name            = "SimpleModbusTcp"
+  project.group   = "gangstad"
+  project.version = "1.0"
+}
+
+niagaraModule {
+  preferredSymbol = "smp"
+  moduleName = "simpleModbusTcp"
+  runtimeProfile = "rt"
+}
+
+dependencies {
+  compile "Tridium:baja:4.0" 
+  compile "Tridium:nre:4.0" 
+  compile "Tridium:alarm-rt:4.0"
+  compile "Tridium:driver-rt:4.0"
+  compile "Tridium:control-rt:4.0"
+  compile "Tridium:ndriver-rt:4.0"
+
+}
+
+moduleTestJar {
+  from('srcTest') {
+  }
+}

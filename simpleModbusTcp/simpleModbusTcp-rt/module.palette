@@ -1,0 +1,15 @@
+<!--
+  Copyright 2022 gangstad, All Rights Reserved.
+ -->
+<?xml version="1.0" encoding="UTF-8"?>
+<bajaObjectGraph version="1.0">
+<p m="b=baja" t="b:UnrestrictedFolder">
+
+ <p n="SimpleModbusTcpNetwork" m="x=simpleModbusTcp" t="x:SimpleModbusTcpNetwork"/>
+ <p n="SimpleModbusTcpDevice" t="x:SimpleModbusTcpDevice"/>
+ <p n="SimpleModbusTcpDeviceFolder" t="x:SimpleModbusTcpDeviceFolder"/>
+
+ <p n="SimpleModbusTcpPointFolder" t="x:SimpleModbusTcpPointFolder"/>
+
+</p>
+</bajaObjectGraph>

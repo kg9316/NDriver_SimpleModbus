@@ -1,0 +1,15 @@
+/*
+ * Copyright 2022 gangstad, All Rights Reserved.
+ */
+/* Environment Configuration File */
+
+// Change niagara_home and niagara_user_home as needed to point to the
+// correct path to your desired Niagara install and its associated
+// user home
+//gradle.ext.niagara_dev_home = "C:/N4_9Labs/SimpleModbusTcp"
+//gradle.ext.niagara_home = "c:/niagara/niagara-4.11.0.142"
+//gradle.ext.niagara_user_home = "C:/Users/kg9316/Niagara4.11/tridium"
+
+gradle.ext.niagara_dev_home = "C:/Users/kg9316/Niagara4.9/CentraLine/StandardGK"
+gradle.ext.niagara_home = "C:/CentraLine/CentraLineNX-4.10.1.36"
+gradle.ext.niagara_user_home = "C:/Users/kg9316/Niagara4.10/CentraLine"

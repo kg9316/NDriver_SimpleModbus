@@ -1,0 +1,19 @@
+<!-- Copyright 2022 gangstad, All Rights Reserved. -->
+<!-- Types -->
+<types>
+  <!-- com.gangstad.simpleModbusTcp -->
+  <!--com.gangstad.simpleModbusTcp-->
+  <type class="com.gangstad.simpleModbusTcp.BSimpleModbusTcpNetwork" name="SimpleModbusTcpNetwork"/>
+  <type class="com.gangstad.simpleModbusTcp.BSimpleModbusTcpDevice" name="SimpleModbusTcpDevice"/>
+  <type class="com.gangstad.simpleModbusTcp.BSimpleModbusTcpDeviceFolder" name="SimpleModbusTcpDeviceFolder"/>
+  <!--com.gangstad.simpleModbusTcp.constants-->
+  <type class="com.gangstad.simpleModbusTcp.constants.BRegisterTypes" name="RegisterTypes"/>
+  <!-- com.gangstad.simpleModbusTcp.point -->
+  <!--com.gangstad.simpleModbusTcp.point-->
+  <type class="com.gangstad.simpleModbusTcp.point.BSimpleModbusTcpPointDeviceExt" name="SimpleModbusTcpPointDeviceExt"/>
+  <type class="com.gangstad.simpleModbusTcp.point.BSimpleModbusTcpPointFolder" name="SimpleModbusTcpPointFolder"/>
+  <type class="com.gangstad.simpleModbusTcp.point.BSimpleModbusTcpProxyExt" name="SimpleModbusTcpProxyExt"/>
+  <type class="com.gangstad.simpleModbusTcp.point.BIModbusPollable" name="IModbusPollable"/>
+  <!--com.gangstad.simpleModbusTcp.comm-->
+  <type class="com.gangstad.simpleModbusTcp.comm.BSimpleModbusTcpTcpCommConfig" name="SimpleModbusTcpTcpCommConfig"/>
+</types>
