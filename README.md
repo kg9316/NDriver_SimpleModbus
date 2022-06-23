@@ -10,12 +10,8 @@ ModbusTCP uses TransactionID this repo will shop how to deal with that.
 
 There will be other repos that have ModbusRTU and one that combine the two in the same network.
 ModbusRTU introduces CRC calculation.
-.
-.
-.
-.
+
 Please add a comment in the discussion when you clone/download.
-.
-.
+
 Kato Gangstad.
 
