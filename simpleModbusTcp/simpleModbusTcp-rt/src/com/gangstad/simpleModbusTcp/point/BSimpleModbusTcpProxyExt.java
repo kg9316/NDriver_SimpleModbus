@@ -25,6 +25,7 @@ import com.tridium.ndriver.poll.BINPollable;
 import java.util.StringTokenizer;
 
 import static com.gangstad.simpleModbusTcp.SimpleModbusHelper.getCommandBasedOnRegisterType;
+import static com.gangstad.simpleModbusTcp.SimpleModbusHelper.getWriteCommandBasedOnRegisterType;
 
 
 /**
@@ -199,13 +200,6 @@ public class BSimpleModbusTcpProxyExt
     network.getPollScheduler().unsubscribe(this);
   }
   
-  public boolean write(Context cx)
-    throws Exception
-  {
-    // TODO
-    return false;
-  }
-  
   /**
    * Return the device type. 
    */
@@ -220,7 +214,7 @@ public class BSimpleModbusTcpProxyExt
   public BReadWriteMode getMode()
   {
     // TODO
-    return BReadWriteMode.readonly;
+    return BReadWriteMode.readWrite;
   }
   public void doPoll()
   {
@@ -253,6 +247,48 @@ public class BSimpleModbusTcpProxyExt
     {
       readFail(e.getMessage());
     }
+  }
+
+  @Override
+  public boolean write(Context cx) throws Exception
+  {
+
+    BSimpleModbusTcpNetwork network = getSimpleModbusTcpNetwork();
+    BSimpleModbusTcpDevice device = (BSimpleModbusTcpDevice)getDevice();
+
+    BIpAddress ipAddress = device.address;
+    int command = getWriteCommandBasedOnRegisterType(getRegisterType().getOrdinal());
+
+    //if our value status is null, we have nothing to write,
+    BStatusValue value = getWriteValue();
+    if( value.getStatus().isNull())
+      return false;
+
+    //otherwise, get the value to write to our remote point
+    BValue valueToWrite = value.getValueValue();
+    //cast to integer
+    int intvalue = (int)((BStatusNumeric)value).getValue();
+
+    SimpleModbusTcpReq writeReq = new SimpleModbusTcpReq(ipAddress,device.getUnitIdentifier(),getAddress(),command,intvalue);
+
+    try
+    {
+      NMessage resp = network.tcomm().sendRequest(writeReq);
+
+      BControlPoint controlPoint = getParentPoint();
+
+      if (((SimpleModbusResp) resp).isOK())
+        writeOk((BStatusValue)value.newCopy());
+        else
+        writeFail("Todo Fail Cause");
+    }
+    catch(Exception e)
+    {
+      writeFail(e.getMessage());
+    }
+
+    //no additional writes pending, so return false
+    return false;
   }
 
   public boolean isBoolean()

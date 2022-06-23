@@ -39,6 +39,12 @@ public class SimpleModbusResp extends SimpleModbusTcpMessage  {
                     //only decode unit16 at this moment
                     value = tis.readUnsigned16();
                     break;
+                case PRESET_SINGLE_REGISTER:
+                case PRESET_MULTIPLE_REGISTER:
+                case FORCE_SINGLE_COIL:
+                case FORCE_MULTIPLE_COILS:
+                    // Don't decode, this was a write command
+                    break;
             }
         }
     }

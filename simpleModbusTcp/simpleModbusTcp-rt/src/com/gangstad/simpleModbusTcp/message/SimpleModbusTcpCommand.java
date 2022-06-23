@@ -18,6 +18,17 @@ public abstract class SimpleModbusTcpCommand extends SimpleModbusTcpMessage{
         this.transactionIdentifier = super.transactionIdentifier;
     }
 
+    public SimpleModbusTcpCommand(BIpAddress add, int unitId, int command, int register,int writevalue){
+        super(getNextTransactionIdentifier());
+        setAddress(add);
+        this.unitId = unitId;
+        this.command = command;
+        this.register = register;
+        this.transactionIdentifier = super.transactionIdentifier;
+        this.writevalue = writevalue;
+        this.writemode = true;
+    }
+
 
 
     public boolean toOutputStream(OutputStream out)
@@ -37,9 +48,17 @@ public abstract class SimpleModbusTcpCommand extends SimpleModbusTcpMessage{
         to.write(register >> 8 & 255);
         to.write(register & 255);
 
-        //Number of registers to read
-        to.write((numOfRegisters >> 8) & 255);
-        to.write(numOfRegisters & 255);
+        if (!writemode) {
+            //Number of registers to read
+            to.write((numOfRegisters >> 8) & 255);
+            to.write(numOfRegisters & 255);
+        }
+        else
+        {
+            //Number of registers to read
+            to.write((writevalue >> 8) & 255);
+            to.write(writevalue & 255);
+        }
 
         //System.out.println("SimpleModbusTcpCommand toOutputStream: "+ byteArrayToHex(to.toByteArray()));
         to.flush();
@@ -84,6 +103,8 @@ public abstract class SimpleModbusTcpCommand extends SimpleModbusTcpMessage{
     int transactionIdentifier = 0;
     int register = 0;
     int numOfRegisters = 1; //limit to one in this example
+    int writevalue = 0;
+    boolean writemode = false;
 
     public void toTraceString(StringBuffer sb)
     {

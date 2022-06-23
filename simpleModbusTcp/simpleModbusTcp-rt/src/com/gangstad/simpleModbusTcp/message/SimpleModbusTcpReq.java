@@ -9,6 +9,11 @@ public class SimpleModbusTcpReq extends SimpleModbusTcpCommand {
         super(add,unitID, command,register);
     }
 
+    public SimpleModbusTcpReq(BIpAddress add, int unitID, int register, int command,int value)
+    {
+        super(add,unitID, command,register,value);
+    }
+
     protected int getDataLength() { return 6; }
 
     public void toTraceString(StringBuffer sb)

@@ -62,9 +62,17 @@ public class SimpleModbusHelper {
             default:
                 return ModBusConstants.READ_HOLDING_REGISTER;
         }
-
-
     }
 
+    public static int getWriteCommandBasedOnRegisterType (int type) {
 
+        switch (type) {
+            case BRegisterTypes.COIL:
+                return ModBusConstants.FORCE_SINGLE_COIL;
+            case BRegisterTypes.HOLDING:
+                return ModBusConstants.PRESET_SINGLE_REGISTER;
+            default:
+                return ModBusConstants.PRESET_SINGLE_REGISTER;
+        }
+    }
 }
