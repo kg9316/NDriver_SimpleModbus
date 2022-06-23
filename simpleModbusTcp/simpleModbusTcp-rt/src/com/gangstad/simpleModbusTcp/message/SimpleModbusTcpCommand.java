@@ -55,7 +55,7 @@ public abstract class SimpleModbusTcpCommand extends SimpleModbusTcpMessage{
         }
         else
         {
-            //Number of registers to read
+            //value to write
             to.write((writevalue >> 8) & 255);
             to.write(writevalue & 255);
         }
