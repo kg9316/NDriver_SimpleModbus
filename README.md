@@ -1,9 +1,9 @@
 # NDriver_SimpleModbus
-Niagara Ndriver example.
+Niagara Ndriver example
 There are no practical examples out there on Ndriver...
 Tridium have Sphero and Midi example at their GitHub page https://github.com/tridium
 
-This is an example that we all can relate to.
+This is an example that we all can relate to
 
 The goal in this repo is to make minimal ModbusTCP client.
 ModbusTCP uses TransactionID this repo will shop how to deal with that.
