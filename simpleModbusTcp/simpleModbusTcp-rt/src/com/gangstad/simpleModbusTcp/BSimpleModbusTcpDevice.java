@@ -7,17 +7,13 @@ import javax.baja.driver.util.BPollFrequency;
 import javax.baja.status.BStatus;
 import javax.baja.sys.*;
 import javax.baja.nre.annotations.*;
-
-import com.gangstad.simpleModbusTcp.constants.BRegisterTypes;
-import com.gangstad.simpleModbusTcp.constants.ModBusConstants;
-import com.gangstad.simpleModbusTcp.message.SimpleModbusResp;
-import com.gangstad.simpleModbusTcp.message.SimpleModbusTcpPing;
+import com.gangstad.simpleModbusTcp.constants.*;
+import com.gangstad.simpleModbusTcp.message.*;
 import com.tridium.ndriver.BNDevice;
 import com.tridium.ndriver.comm.NMessage;
 import com.tridium.ndriver.datatypes.BIpAddress;
 import com.tridium.ndriver.poll.BINPollable;
 import com.tridium.ndriver.util.SfUtil;
-
 import com.gangstad.simpleModbusTcp.point.*;
 
 import static com.gangstad.simpleModbusTcp.SimpleModbusHelper.getCommandBasedOnRegisterType;
@@ -316,7 +312,7 @@ public class BSimpleModbusTcpDevice
 
     int command = getCommandBasedOnRegisterType(getPingRegisterType().getOrdinal());
 
-    SimpleModbusTcpPing pingReq = new SimpleModbusTcpPing(ipAddress,getUnitIdentifier(),getPingAddress(),command);
+    SimpleModbusTcpReq pingReq = new SimpleModbusTcpReq(ipAddress,getUnitIdentifier(),getPingAddress(),command);
     NMessage resp =network.tcomm().sendRequest(pingReq);
 
     if (((SimpleModbusResp) resp).isOK())

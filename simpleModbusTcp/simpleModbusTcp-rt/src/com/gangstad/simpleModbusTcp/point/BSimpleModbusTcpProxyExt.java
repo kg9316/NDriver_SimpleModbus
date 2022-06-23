@@ -4,17 +4,15 @@
 package com.gangstad.simpleModbusTcp.point;
 
 import javax.baja.control.BControlPoint;
-import javax.baja.control.BEnumPoint;
 import javax.baja.control.BNumericPoint;
 import javax.baja.driver.util.BPollFrequency;
-import javax.baja.nre.util.TextUtil;
 import javax.baja.sys.*;
 import javax.baja.status.*;
 import javax.baja.driver.point.*;
 
 import com.gangstad.simpleModbusTcp.constants.BRegisterTypes;
 import com.gangstad.simpleModbusTcp.message.SimpleModbusResp;
-import com.gangstad.simpleModbusTcp.message.SimpleModbusTcpPing;
+import com.gangstad.simpleModbusTcp.message.SimpleModbusTcpReq;
 import com.tridium.ndriver.comm.NMessage;
 import com.tridium.ndriver.datatypes.BIpAddress;
 import com.tridium.ndriver.point.BNProxyExt;
@@ -231,7 +229,7 @@ public class BSimpleModbusTcpProxyExt
 
     BIpAddress ipAddress = device.address;
     int command = getCommandBasedOnRegisterType(getRegisterType().getOrdinal());
-    SimpleModbusTcpPing readReq = new SimpleModbusTcpPing(ipAddress,device.getUnitIdentifier(),getAddress(),command);
+    SimpleModbusTcpReq readReq = new SimpleModbusTcpReq(ipAddress,device.getUnitIdentifier(),getAddress(),command);
     try
     {
       NMessage resp = network.tcomm().sendRequest(readReq);

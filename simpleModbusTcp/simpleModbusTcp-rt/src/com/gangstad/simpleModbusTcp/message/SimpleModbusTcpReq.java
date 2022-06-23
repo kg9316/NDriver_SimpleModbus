@@ -2,9 +2,9 @@ package com.gangstad.simpleModbusTcp.message;
 
 import com.tridium.ndriver.datatypes.BIpAddress;
 
-public class SimpleModbusTcpPing extends SimpleModbusTcpCommand {
+public class SimpleModbusTcpReq extends SimpleModbusTcpCommand {
 
-    public SimpleModbusTcpPing(BIpAddress add, int unitID, int register, int command)
+    public SimpleModbusTcpReq(BIpAddress add, int unitID, int register, int command)
     {
         super(add,unitID, command,register);
     }
