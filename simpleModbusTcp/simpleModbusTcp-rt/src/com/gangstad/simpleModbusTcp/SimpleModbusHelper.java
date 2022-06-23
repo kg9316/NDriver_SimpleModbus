@@ -72,7 +72,7 @@ public class SimpleModbusHelper {
             case BRegisterTypes.HOLDING:
                 return ModBusConstants.PRESET_SINGLE_REGISTER;
             default:
-                return ModBusConstants.PRESET_SINGLE_REGISTER;
+                return 0;
         }
     }
 }
